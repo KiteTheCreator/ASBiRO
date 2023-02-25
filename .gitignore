@@ -1,0 +1,4 @@
+
+*.xml
+.gitattributes
+.idea/.DS_Store
