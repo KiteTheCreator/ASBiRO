@@ -1,4 +1,4 @@
-package pl.gamecrewstudios.config;
+package pl.softwaregods.config;
 
 import java.util.ArrayList;
 

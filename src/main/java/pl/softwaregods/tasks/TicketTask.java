@@ -1,4 +1,4 @@
-package pl.gamecrewstudios.tasks;
+package pl.softwaregods.tasks;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -12,9 +12,9 @@ import net.dv8tion.jda.api.interactions.modals.Modal;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
-import pl.gamecrewstudios.config.Config;
-import pl.gamecrewstudios.utils.DataHelper;
-import pl.gamecrewstudios.utils.TimeHelper;
+import pl.softwaregods.config.Config;
+import pl.softwaregods.utils.DataHelper;
+import pl.softwaregods.utils.TimeHelper;
 
 import javax.annotation.Nonnull;
 import java.awt.*;

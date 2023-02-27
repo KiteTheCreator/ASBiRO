@@ -1,4 +1,4 @@
-package pl.gamecrewstudios.utils;
+package pl.softwaregods.utils;
 
 
 import java.text.DateFormat;

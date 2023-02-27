@@ -1,4 +1,4 @@
-package pl.gamecrewstudios.tasks;
+package pl.softwaregods.tasks;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;

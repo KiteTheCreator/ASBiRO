@@ -1,4 +1,4 @@
-package pl.gamecrewstudios;
+package pl.softwaregods;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,10 +10,10 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
-import pl.gamecrewstudios.config.Config;
-import pl.gamecrewstudios.senders.StartTicketMessageSender;
-import pl.gamecrewstudios.tasks.TicketTask;
-import pl.gamecrewstudios.tasks.WelcomeMessageTask;
+import pl.softwaregods.config.Config;
+import pl.softwaregods.senders.StartTicketMessageSender;
+import pl.softwaregods.tasks.TicketTask;
+import pl.softwaregods.tasks.WelcomeMessageTask;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

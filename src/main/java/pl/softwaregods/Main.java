@@ -1,4 +1,4 @@
-package pl.gamecrewstudios;
+package pl.softwaregods;
 
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
@@ -13,7 +13,6 @@ public class Main implements EventListener{
 
     public void onEvent(GenericEvent e) {
         if (e instanceof ReadyEvent)
-            System.out.println("\n\nBot has been turned on! GameCrew Studios");
+            System.out.println("\n\nBot has been turned on! ");
     }
-
 }
