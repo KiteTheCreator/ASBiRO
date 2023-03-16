@@ -4,6 +4,8 @@ package pl.softwaregods.Managers;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -21,8 +23,10 @@ import org.jetbrains.annotations.NotNull;
 import pl.softwaregods.config.Config;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class CommandMNG extends ListenerAdapter {
 
@@ -45,65 +49,41 @@ public class CommandMNG extends ListenerAdapter {
         } else if (command.equals("rules")) {
             EmbedBuilder rules = new EmbedBuilder();
             rules.setTitle("📚 Regulamin 📚");
-            rules.setDescription("1. Postanowienia Ogólne\n" +
-                    "  1.1 Nieprzestrzeganie poniższego regulaminu wiąże się z otrzymaniem kary.\n" +
-                    "  1.2 Nieznajomość regulaminu nie zwalnia z jego przestrzegania.\n" +
-                    "  1.3 Administracja ma pełne prawa do zmieniania treści regulaminu bez wcześniejszego\n" +
-                    "      powiadomienia użytkowników o zmianie.\n" +
-                    "  1.4 Niniejszy regulamin wchodzi w życie z dniem 15 lutego 2021 roku.\n" +
-                    "2. Zasady kanałów tekstowych\n" +
-                    "  2.1 Zakazane jest spamowanie i floodowanie.\n" +
-                    "  2.2 Zabrania się pisania wielkimi literami. (CapsLock)\n" +
-                    "  2.3 Zakaz używania wulgaryzmów na kanałach tekstowych, a także głosowych.\n" +
-                    "  2.4 Zakazane jest prowokowanie kłótni, dyskusji które mają negatywny wpływ na serwer.\n" +
-                    "  2.5 Zakaz wykorzystywania, oszukiwania i szantażowania innych użytkowników.\n" +
-                    "  2.6 Zabroniony jest wszelkiego rodzaju trolling oraz inne formy zachowań anty społecznych, które\n" +
-                    "      służą za przynętę do prowokowania (§2.4) różnych użytkowników.\n" +
-                    "  2.7 Zakaz obrażania graczy, administracji i serwera oraz działania na ich szkody.\n" +
-                    "  2.8 Reklamowanie jakichkolwiek serwerów zewnętrznych: gier, stron www, serwerów discord itp. bez\n" +
-                    "      pisemnej zgody właścicieli Esportology jest karalne.\n" +
-                    "  2.9 Zakaz wykorzystywania możliwych błędów na serwerze. Należy je natychmiast bezzwłocznie\n" +
-                    "      zgłosić administracji z zachowaniem poufności wobec osób trzecich.\n" +
-                    "  2.10 Zakazane jest poruszanie tematów wulgarnych/erotycznych/religijnych/rasistowskich itp.\n" +
-                    "  2.11 Podszywanie się pod graczy będzie karane kickiem, następnie banem. Podszywanie się pod\n" +
-                    "       administrację będzie skutkowało natychmiastowym banem.\n" +
-                    "  2.12 Komend można używać tylko na kanale do tego stworzonym.\n" +
-                    "2.13 Zakaz pisania na rzeczy niezgodnych z tematyką kanału.\n" +
-                    "  2.14 Zabronione jest wysyłanie linków lub plików zawierających jakiekolwiek treści\n" +
-                    "       wulgarne/rasistowskie/pornograficzne/religijne itp. oraz plików szkodliwych (wirusy).\n" +
-                    "  2.15 Awatar oraz nick nie może zawierać treści obraźliwych/rasistowskich/wulgarnych itp.\n" +
-                    "  2.16 Karą za złe używanie emotikon jest ostrzeżenie a następnie ban czasowy.\n" +
-                    "  2.17 Przeszkadzanie administracji jest surowo karane.\n" +
-                    "3. Zasady kanałów głosowych\n" +
-                    "  3.1 Wszystkie zasady kanałów tekstowych obowiązują także w głosowych.\n" +
-                    "  3.2 Zakaz krzyczenia i mocnego podnoszenia głosu.\n" +
-                    "  3.3 Zakazane jest puszczanie do mikrofonu muzyki itp.\n" +
-                    "  3.4 Zabrania się puszczania różnych bliżej nieokreślonych dźwięków, przesterów itp.\n" +
-                    "4. Zasady przyznawania rang\n" +
-                    "  4.1 Przyznanie rangi drużynowej, osobom do tego nieuprawnionym jest surowo zabronione.");
+            rules.setDescription("");
             rules.setColor(Color.decode(Config.embedColorAll));
-            rules.setFooter("© Technikum TEB Edukacja Katowice");
+            rules.setFooter("© SoftwareGods.pl");
             e.getChannel().sendMessageEmbeds(rules.build()).setActionRow(Button.success("accept", "✅ Akceptuję ✅")).queue();
             e.reply("Pomyślnie stworzyłeś regulamin serwera");
-        } else if (command.equals("turrules")) {
-            EmbedBuilder rules = new EmbedBuilder();
-            rules.setTitle("🎮 Zasady Turnieju 🎮");
-            rules.setDescription("bla bla");
-            rules.setColor(Color.decode(Config.embedColorAll));
-            rules.setFooter("© Technikum TEB Edukacja Katowice");
-            e.getChannel().sendMessageEmbeds(rules.build()).queue();
-            e.reply("Pomyślnie stworzyłeś regulamin turnieju");
+        } else if (command.equals("głosowanie")) {
+            TextInput contentvote = TextInput.create("vote-cont", "Zawartość ankiety", TextInputStyle.SHORT)
+                    .setPlaceholder("Wpisz do czego ma dotyczyć ankieta")
+                    .setMinLength(0)
+                    .setMaxLength(1024)
+                    .setRequired(true)
+                    .build();
+            Modal vote = Modal.create("vote", "📊Ankieta📊").addActionRows(ActionRow.of(contentvote)).build();
+           e.replyModal(vote).queue();
+        } else if (command.equals("konkurs")) {
+            TextInput contentkonkurs = TextInput.create("kon-cont", "Zawartość konkursu", TextInputStyle.SHORT)
+                    .setPlaceholder("Wpisz do czego ma dotyczyć ankieta")
+                    .setMinLength(0)
+                    .setMaxLength(1024)
+                    .setRequired(true)
+                    .build();
+            Modal konkurs = Modal.create("kon", "📊Ankieta📊").addActionRows(ActionRow.of(contentkonkurs)).build();
+            e.replyModal(konkurs).queue();
+        } else if (command.equals("zmiany")) {
+            TextInput contentchange = TextInput.create("kon-chan", "Zawartość zmian", TextInputStyle.SHORT)
+                    .setPlaceholder("Wpisz co zostało zmienione")
+                    .setMinLength(0)
+                    .setMaxLength(1024)
+                    .setRequired(true)
+                    .build();
+            Modal change = Modal.create("chan", "🔧Change-Log🔧").addActionRows(ActionRow.of(contentchange)).build();
+            e.replyModal(change).queue();
         }
     }
 
-    @Override
-    public void onButtonInteraction(@NotNull ButtonInteractionEvent e) {
-        if (e.getComponentId().equalsIgnoreCase("accept")){
-            Role rules = e.getGuild().getRoleById("1077790377530114079");
-            e.getGuild().addRoleToMember(e.getUser(), rules).queue();
-            e.reply("Pomyślnie zaakceptowałeś zasady serwera").setEphemeral(true).queue();
-        }
-    }
 
     @Override
     public void onModalInteraction(@NotNull ModalInteractionEvent e) {
@@ -113,11 +93,90 @@ public class CommandMNG extends ListenerAdapter {
             acc.setTitle("❗️ Ogłoszenie ❗️");
             acc.setColor(Color.decode(Config.embedColorAll));
             acc.setDescription(content);
-            acc.setFooter("© Technikum TEB Edukacja Katowice");
+            acc.setFooter("© SoftwareGods.pl");
             e.getChannel().sendMessage("||@everyone||").addEmbeds(acc.build()).queue();
             e.reply("Pomyślnie stworzyłeś ogłoszenie").setEphemeral(true).queue();
             acc.clear();
         }
+
+        if (e.getModalId().equals("vote")) {
+            String votecont = e.getValue("vote-cont").getAsString();
+            EmbedBuilder vote = new EmbedBuilder();
+            vote.setTitle("📊 Ankieta 📊");
+            vote.setDescription(votecont);
+            vote.setColor(Color.decode(Config.embedColorAll));
+            vote.setFooter("© SoftwareGods.pl");
+            e.getChannel().sendMessageEmbeds(vote.build()).queue(message -> {
+                message.addReaction(Emoji.fromUnicode("U+2705")).queue();
+                message.addReaction(Emoji.fromUnicode("U+274C")).queue();
+            });
+            e.reply("Pomyślnie stworzyłeś głosowanie na kanale").setEphemeral(true).queue();
+        }
+
+        if (e.getModalId().equals("kon")){
+            String koncont = e.getValue("kon-cont").getAsString();
+            EmbedBuilder kon = new EmbedBuilder();
+            kon.setTitle("📊 Konkurs 📊");
+            kon.setDescription(koncont);
+            kon.setColor(Color.decode(Config.embedColorAll));
+            kon.setFooter("© SoftwareGods.pl");
+            e.getChannel().sendMessageEmbeds(kon.build()).setActionRow(Button.danger("Join", "Weź udział w konkursie  •  ")).queue();
+            e.reply("Pomyślnie stworzyłeś konkurs").setEphemeral(true).queue();
+        }
+        if (e.getModalId().equals("chan")){
+            String koncont = e.getValue("kon-chan").getAsString();
+            EmbedBuilder cha = new EmbedBuilder();
+            Date nowDate = new Date();
+            SimpleDateFormat sdf4 = new SimpleDateFormat("MM/dd/yyyy • HH:mm");
+            cha.setTitle("🔄 Zmiany 🔄");
+            cha.addField("Data zmiany: ", sdf4.format(nowDate), true);
+            cha.addField("Administrator: ", e.getMember().getAsMention(), true);
+            cha.addField("Treść", koncont, false);
+            cha.setColor(Color.decode(Config.embedColorAll));
+            cha.setFooter("© SoftwareGods.pl");
+            e.getChannel().sendMessageEmbeds(cha.build()).queue(message -> {
+                message.addReaction(Emoji.fromUnicode("U+2705")).queue();
+                message.addReaction(Emoji.fromUnicode("U+274C")).queue();
+            });
+            e.reply("Pomyślnie stworzyłeś changelog").setEphemeral(true).queue();
+        }
+
+    }
+
+    @Override
+    public void onButtonInteraction(@NotNull ButtonInteractionEvent e) {
+        if (e.getComponentId().equalsIgnoreCase("accept")){
+            Role rules = e.getGuild().getRoleById("1077790377530114079");
+            e.getGuild().addRoleToMember(e.getUser(), rules).queue();
+            e.reply("Pomyślnie zaakceptowałeś zasady serwera").setEphemeral(true).queue();
+        }
+    if (e.getComponentId().equalsIgnoreCase("Join")) {
+        String[] users = new String[]{e.getUser().getId()};
+
+        EmbedBuilder win = new EmbedBuilder();
+        Date nowDate = new Date();
+        Date konDate = new Date();
+        Timer timer = new Timer();
+        SimpleDateFormat sdf4 = new SimpleDateFormat("MM/dd/yyyy • HH:mm");
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+//                String id = users.get((int) (Math.random() * users.size())).getId();
+//                win.setTitle("Wygrał:");
+//                win.setDescription("<@" + id + ">");
+//                e.getChannel().sendMessageEmbeds(win.build()).queue();
+
+                for(int i = 0; i < users.length; i++) {
+                    e.getChannel().sendMessage(users[i]).queue();
+                }
+            }
+        }, 20000);
+        e.getMessage().delete().queue();
+    }
+    if (e.getComponentId().equalsIgnoreCase("Joined")){
+    }
+        e.editButton(Button.success("Joined", "Wziąłeś już udział w konkursie")).queue();
     }
 
     @Override
@@ -125,7 +184,9 @@ public class CommandMNG extends ListenerAdapter {
         List<CommandData> commandData = new ArrayList<>();
         commandData.add(Commands.slash("ogłoszenie", "Napisz co chcesz ogłosić").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
         commandData.add(Commands.slash("rules", "zasady-admin-only").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
-        commandData.add(Commands.slash("turrules", "zasady-turnieju-admin-only").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
+        commandData.add(Commands.slash("głosowanie", "rozpoczęcie głosowania").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
+        commandData.add(Commands.slash("konkurs", "rozpoczęcie konkursu").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
+        commandData.add(Commands.slash("zmiany", "Change-list").setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR)));
 
         e.getGuild().updateCommands().addCommands(commandData).queue();
     }

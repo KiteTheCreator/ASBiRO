@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import pl.softwaregods.Managers.CommandMNG;
 import pl.softwaregods.config.Config;
 import pl.softwaregods.senders.StartTicketMessageSender;
 import pl.softwaregods.tasks.TicketTask;
@@ -44,6 +45,7 @@ public class DiscordBot {
                 new Main(),
                 // Senders
                 new StartTicketMessageSender(),
+                new CommandMNG(),
 
                 // Tasks
                 new TicketTask(),
