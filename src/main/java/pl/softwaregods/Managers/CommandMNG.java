@@ -54,7 +54,7 @@ public class CommandMNG extends ListenerAdapter {
                     "1.2 Nieznajomość regulaminu nie zwalnia z jego przestrzegania.\n" +
                     "1.3 Administracja ma pełne prawa do zmieniania treści regulaminu bez wcześniejszego\n" +
                     "powiadomienia użytkowników o zmianie.\n" +
-                    "1.4 Niniejszy regulamin wchodzi w życie z dniem 27 lutego 2023 roku.\n" +
+                    "1.4 Niniejszy regulamin wchodzi w życie z dniem 21 marca 2023 roku.\n" +
                     "2. Zasady kanałów tekstowych\n" +
                     "2.1 Zakazane jest spamowanie i floodowanie.\n" +
                     "2.2 Zabrania się pisania wielkimi literami. (CapsLock)\n" +
@@ -81,9 +81,7 @@ public class CommandMNG extends ListenerAdapter {
                     "3.1 Wszystkie zasady kanałów tekstowych obowiązują także w głosowych.\n" +
                     "3.2 Zakaz krzyczenia i mocnego podnoszenia głosu.\n" +
                     "3.3 Zakazane jest puszczanie do mikrofonu muzyki itp.\n" +
-                    "3.4 Zabrania się puszczania różnych bliżej nieokreślonych dźwięków, przesterów itp.\n" +
-                    "4. Zasady przyznawania rang\n" +
-                    "4.1 Przyznanie rangi drużynowej, osobom do tego nieuprawnionym jest surowo zabronione.");
+                    "3.4 Zabrania się puszczania różnych bliżej nieokreślonych dźwięków, przesterów itp.\n");
             rules.setColor(Color.decode(Config.embedColorAll));
             rules.setFooter("© Klub ASBiRO Polska");
             rules.setImage("https://i.imgur.com/BGx2F1K.png");
