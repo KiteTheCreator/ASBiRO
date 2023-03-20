@@ -85,7 +85,7 @@ public class CommandMNG extends ListenerAdapter {
                     "4. Zasady przyznawania rang\n" +
                     "4.1 Przyznanie rangi drużynowej, osobom do tego nieuprawnionym jest surowo zabronione.");
             rules.setColor(Color.decode(Config.embedColorAll));
-            rules.setFooter("© SoftwareGods.pl");
+            rules.setFooter("© Klub ASBiRO Polska");
             rules.setImage("https://i.imgur.com/BGx2F1K.png");
             e.getChannel().sendMessageEmbeds(rules.build()).setActionRow(Button.success("accept", "✅ Akceptuję ✅")).queue();
             e.reply("Pomyślnie stworzyłeś regulamin serwera");
@@ -128,7 +128,7 @@ public class CommandMNG extends ListenerAdapter {
             acc.setTitle("❗️ Ogłoszenie ❗️");
             acc.setColor(Color.decode(Config.embedColorAll));
             acc.setDescription(content);
-            acc.setFooter("© SoftwareGods.pl");
+            acc.setFooter("© Klub ASBiRO Polska");
             acc.setThumbnail("https://i.imgur.com/apRJAXJ.png");
             e.getChannel().sendMessage("||@everyone||").addEmbeds(acc.build()).queue();
             e.reply("Pomyślnie stworzyłeś ogłoszenie").setEphemeral(true).queue();
@@ -141,7 +141,7 @@ public class CommandMNG extends ListenerAdapter {
             vote.setTitle("📊 Ankieta 📊");
             vote.setDescription(votecont);
             vote.setColor(Color.decode(Config.embedColorAll));
-            vote.setFooter("© SoftwareGods.pl");
+            vote.setFooter("© Klub ASBiRO Polska");
             vote.setImage("https://i.imgur.com/ZT2uDmt.png");
             e.getChannel().sendMessageEmbeds(vote.build()).queue(message -> {
                 message.addReaction(Emoji.fromUnicode("U+2705")).queue();
@@ -156,7 +156,7 @@ public class CommandMNG extends ListenerAdapter {
             kon.setTitle("📊 Konkurs 📊");
             kon.setDescription(koncont);
             kon.setColor(Color.decode(Config.embedColorAll));
-            kon.setFooter("© SoftwareGods.pl");
+            kon.setFooter("© Klub ASBiRO Polska");
             kon.setImage("https://i.imgur.com/ETzjMvp.png");
             e.getChannel().sendMessageEmbeds(kon.build()).setActionRow(Button.primary("Join", "✅")).queue();
             e.reply("Pomyślnie stworzyłeś konkurs").setEphemeral(true).queue();
@@ -166,13 +166,13 @@ public class CommandMNG extends ListenerAdapter {
             EmbedBuilder cha = new EmbedBuilder();
             Date nowDate = new Date();
             SimpleDateFormat sdf4 = new SimpleDateFormat("MM/dd/yyyy • HH:mm");
-            cha.setTitle("🔄     Zmiany   🔄");
+            cha.setTitle("🔄 Zmiany 🔄");
             cha.addField("Data zmiany: ", sdf4.format(nowDate), true);
             cha.addField("Administrator: ", e.getMember().getAsMention(), true);
-            cha.addField("Treść", koncont, false);
+            cha.addField("Co się zmieniło: ", "```"+koncont+"```", false);
             cha.setThumbnail("https://i.imgur.com/apRJAXJ.png");
             cha.setColor(Color.decode(Config.embedColorAll));
-            cha.setFooter("© SoftwareGods.pl");
+            cha.setFooter("© Klub ASBiRO Polska");
             e.getChannel().sendMessageEmbeds(cha.build()).queue(message -> {
                 message.addReaction(Emoji.fromUnicode("U+2705")).queue();
                 message.addReaction(Emoji.fromUnicode("U+274C")).queue();

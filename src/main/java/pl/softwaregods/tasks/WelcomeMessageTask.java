@@ -14,12 +14,12 @@ public class WelcomeMessageTask extends ListenerAdapter {
         Role chuj1 = e.getGuild().getRoleById("1078430016863477790");
         Role chuj2 = e.getGuild().getRoleById("1078433659083829278");
         EmbedBuilder welcome = new EmbedBuilder();
-        welcome.setTitle("Cześć! 😀");
+        welcome.setTitle("Cześć! 😀" + " " + e.getUser().getAsTag());
         welcome.setDescription("Zachęcamy do sprawdzenia następujących kanałów:\n" +
-                "<#1077750726157148230> - Zapoznanie się z regulaminem serwera jest obowiązkowe.\n" +
-                "<#1077754512632205314> - Tutaj pojawią się najważniejsze informacje na temat turnieju.\n" +
-                "<#1077648289152901252>- Utwórz zgłoszenie, na które odpowiedzą Ci administratorzy.\n" +
-                "<#1077595752144052326> - Porozmawiaj z innymi użytkownikami serwera.\n" +
+                "<#1078854101267390535> - Zapoznanie się z regulaminem serwera jest obowiązkowe.\n" +
+                "<#1078853969960513536> - Tutaj pojawią się najważniejsze informacje na temat serwera discord i społeczności ASBiRO.\n" +
+                "<#1078854685286473728>- Jeśli potrzebujesz pomocy utwórz zgłoszenie, na które odpowiedzą Ci administratorzy serwera.\n" +
+                "<#1078855098974883880> - Porozmawiaj z innymi użytkownikami serwera.\n" +
                 "\n" +
                 "Zapraszamy również do zaobserwowania nas na innych Social Mediach:\n" +
                 "Facebook: Kliknij tutaj!\n" +
@@ -32,6 +32,7 @@ public class WelcomeMessageTask extends ListenerAdapter {
         e.getGuild().addRoleToMember(e.getUser(), def).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj1).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj2).queue();
+        welcome.clear();
     }
 }
 
