@@ -1,6 +1,7 @@
 package pl.softwaregods.tasks;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -9,6 +10,9 @@ public class WelcomeMessageTask extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent e) {
+        Role def = e.getGuild().getRoleById("1078416900167573655");
+        Role chuj1 = e.getGuild().getRoleById("1078430016863477790");
+        Role chuj2 = e.getGuild().getRoleById("1078433659083829278");
         EmbedBuilder welcome = new EmbedBuilder();
         welcome.setTitle("Cześć! 😀");
         welcome.setDescription("Zachęcamy do sprawdzenia następujących kanałów:\n" +
@@ -23,6 +27,9 @@ public class WelcomeMessageTask extends ListenerAdapter {
                 "Youtube: Kliknij tutaj!\n" +
                 "TikTok: Kliknij tutaj!\n");
         e.getUser().openPrivateChannel().flatMap(channel -> channel.sendMessageEmbeds(welcome.build())).queue();
+        e.getGuild().addRoleToMember(e.getUser(), def).queue();
+        e.getGuild().addRoleToMember(e.getUser(), chuj1).queue();
+        e.getGuild().addRoleToMember(e.getUser(), chuj2).queue();
     }
 }
 

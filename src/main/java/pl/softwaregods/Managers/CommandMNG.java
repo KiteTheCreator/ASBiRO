@@ -129,6 +129,7 @@ public class CommandMNG extends ListenerAdapter {
             acc.setColor(Color.decode(Config.embedColorAll));
             acc.setDescription(content);
             acc.setFooter("© SoftwareGods.pl");
+            acc.setThumbnail("https://i.imgur.com/apRJAXJ.png");
             e.getChannel().sendMessage("||@everyone||").addEmbeds(acc.build()).queue();
             e.reply("Pomyślnie stworzyłeś ogłoszenie").setEphemeral(true).queue();
             acc.clear();
@@ -185,7 +186,9 @@ public class CommandMNG extends ListenerAdapter {
     public void onButtonInteraction(@NotNull ButtonInteractionEvent e) {
         if (e.getComponentId().equalsIgnoreCase("accept")){
             Role rules = e.getGuild().getRoleById("1078431116303810610");
+            Role ver = e.getGuild().getRoleById("1078430865765445795");
             e.getGuild().addRoleToMember(e.getUser(), rules).queue();
+            e.getGuild().addRoleToMember(e.getUser(), ver).queue();
             e.reply("Pomyślnie zaakceptowałeś zasady serwera").setEphemeral(true).queue();
         }
     if (e.getComponentId().equalsIgnoreCase("Join")) {
