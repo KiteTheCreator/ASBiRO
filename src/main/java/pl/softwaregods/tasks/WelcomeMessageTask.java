@@ -26,7 +26,9 @@ public class WelcomeMessageTask extends ListenerAdapter {
                 "Instagram: Kliknij tutaj!\n" +
                 "Youtube: Kliknij tutaj!\n" +
                 "TikTok: Kliknij tutaj!\n");
-        e.getUser().openPrivateChannel().flatMap(channel -> channel.sendMessageEmbeds(welcome.build())).queue();
+        welcome.setImage("https://i.imgur.com/XJV7Fo7.png");
+       // e.getUser().openPrivateChannel().flatMap(channel -> channel.sendMessageEmbeds(welcome.build())).queue();
+        e.getGuild().getTextChannelById("1078853366832173087").sendMessageEmbeds(welcome.build()).queue();
         e.getGuild().addRoleToMember(e.getUser(), def).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj1).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj2).queue();

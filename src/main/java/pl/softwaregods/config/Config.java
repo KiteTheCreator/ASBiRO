@@ -48,7 +48,7 @@ public class Config {
         public String ticket_start_embed_title = "Masz Pytanie? Pisz ✏️";
         public String ticket_start_embed_description = "Jeśli masz jakąś sprawe, kliknij przycisk poniżej i napisz do Naszej administracji postaramy się jak najszybciej odpisać. Nadużywanie tej funkcji będzię kończyło się banem dla użytkownika.";
         public String ticket_created_message = "Twój ticket został utworzony";
-        public String ticket_close_button_message = "Zamknij ticket \uD83D\uDD12";
+        public String ticket_close_button_message = "❌ Zamknij ticket \uD83D\uDD12";
         public String ticket_close_message = "Twój ticket zostanie zamknięty za 5 sekund";
     }
 
