@@ -33,9 +33,7 @@ public class Config {
 
     public static class Commands {
         public String sender_command = "-uhger564729";
-        public String ver_command = "-ver";
 
-        public String scho_command = "-scho";
 
 
     }
@@ -46,16 +44,16 @@ public class Config {
     }
 
     public static class Messages {
-        public String ticket_start_button_message = "✏️Napisz!";
-        public String ticket_start_embed_title = "Masz Pytanie? pisz ✏️";
-        public String ticket_start_embed_description = "Jeśli masz jakąś sprawe, kliknij przycisk poniżej i napisz do naszej administracji postaramy się jak najszybciej odpisać nadużywanie tej funkcji będzię kończyło się banem dla użytkownika.";
+        public String ticket_start_button_message = "✏️ Napisz!";
+        public String ticket_start_embed_title = "Masz Pytanie? Pisz ✏️";
+        public String ticket_start_embed_description = "Jeśli masz jakąś sprawe, kliknij przycisk poniżej i napisz do Naszej administracji postaramy się jak najszybciej odpisać. Nadużywanie tej funkcji będzię kończyło się banem dla użytkownika.";
         public String ticket_created_message = "Twój ticket został utworzony";
         public String ticket_close_button_message = "Zamknij ticket \uD83D\uDD12";
         public String ticket_close_message = "Twój ticket zostanie zamknięty za 5 sekund";
     }
 
     public static class Categories {
-        public String tickets_category = "1077651281583276143";
+        public String tickets_category = "1087440506864275557";
     }
 
 }

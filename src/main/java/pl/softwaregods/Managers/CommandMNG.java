@@ -96,7 +96,7 @@ public class CommandMNG extends ListenerAdapter {
                     .setMaxLength(1024)
                     .setRequired(true)
                     .build();
-            Modal vote = Modal.create("vote", "📊Ankieta📊").addActionRows(ActionRow.of(contentvote)).build();
+            Modal vote = Modal.create("vote", "📊    Ankieta 📊").addActionRows(ActionRow.of(contentvote)).build();
            e.replyModal(vote).queue();
         } else if (command.equals("konkurs")) {
             TextInput contentkonkurs = TextInput.create("kon-cont", "Zawartość konkursu", TextInputStyle.SHORT)
@@ -105,7 +105,7 @@ public class CommandMNG extends ListenerAdapter {
                     .setMaxLength(1024)
                     .setRequired(true)
                     .build();
-            Modal konkurs = Modal.create("kon", "📊Ankieta📊").addActionRows(ActionRow.of(contentkonkurs)).build();
+            Modal konkurs = Modal.create("kon", "📊  Ankieta 📊").addActionRows(ActionRow.of(contentkonkurs)).build();
             e.replyModal(konkurs).queue();
         } else if (command.equals("zmiany")) {
             TextInput contentchange = TextInput.create("kon-chan", "Zawartość zmian", TextInputStyle.SHORT)
@@ -141,6 +141,7 @@ public class CommandMNG extends ListenerAdapter {
             vote.setDescription(votecont);
             vote.setColor(Color.decode(Config.embedColorAll));
             vote.setFooter("© SoftwareGods.pl");
+            vote.setImage("https://i.imgur.com/ZT2uDmt.png");
             e.getChannel().sendMessageEmbeds(vote.build()).queue(message -> {
                 message.addReaction(Emoji.fromUnicode("U+2705")).queue();
                 message.addReaction(Emoji.fromUnicode("U+274C")).queue();
@@ -155,6 +156,7 @@ public class CommandMNG extends ListenerAdapter {
             kon.setDescription(koncont);
             kon.setColor(Color.decode(Config.embedColorAll));
             kon.setFooter("© SoftwareGods.pl");
+            kon.setImage("https://i.imgur.com/ETzjMvp.png");
             e.getChannel().sendMessageEmbeds(kon.build()).setActionRow(Button.primary("Join", "✅")).queue();
             e.reply("Pomyślnie stworzyłeś konkurs").setEphemeral(true).queue();
         }
@@ -182,7 +184,7 @@ public class CommandMNG extends ListenerAdapter {
     @Override
     public void onButtonInteraction(@NotNull ButtonInteractionEvent e) {
         if (e.getComponentId().equalsIgnoreCase("accept")){
-            Role rules = e.getGuild().getRoleById("1077790377530114079");
+            Role rules = e.getGuild().getRoleById("1078431116303810610");
             e.getGuild().addRoleToMember(e.getUser(), rules).queue();
             e.reply("Pomyślnie zaakceptowałeś zasady serwera").setEphemeral(true).queue();
         }

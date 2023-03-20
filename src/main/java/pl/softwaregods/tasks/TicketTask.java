@@ -30,7 +30,7 @@ public class TicketTask extends ListenerAdapter {
         if (e.getComponentId().equalsIgnoreCase(Config.buttons.ticket_start_button_id)) {
             if (!nextUsage.containsKey(e.getUser())) nextUsage.put(e.getUser(), 10L);
             if (nextUsage.get(e.getUser()) > System.currentTimeMillis()) {
-                e.reply("`#` An error has occurred! Wait more:: **" + DataHelper.durationToString(nextUsage.get(e.getUser()) - System.currentTimeMillis(), true)+"**").setEphemeral(true).queue();
+                e.reply("`#` Wystąpił problem spróbuj ponownie za:: **" + DataHelper.durationToString(nextUsage.get(e.getUser()) - System.currentTimeMillis(), true)+"**").setEphemeral(true).queue();
                 return;
             }
             nextUsage.put(e.getUser(), System.currentTimeMillis() + TimeHelper.MINUTE.getTime());
