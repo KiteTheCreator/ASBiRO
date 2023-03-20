@@ -12,7 +12,7 @@ public class Config {
     public static Categories categories;
 
     public Config() {
-        embedColorAll = "#e6070e";
+        embedColorAll = "#00ff00";
         needRole = new NeedRole();
         statusBot = new StatusBot();
         commands = new Commands();

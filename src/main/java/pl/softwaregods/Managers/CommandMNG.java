@@ -49,9 +49,44 @@ public class CommandMNG extends ListenerAdapter {
         } else if (command.equals("rules")) {
             EmbedBuilder rules = new EmbedBuilder();
             rules.setTitle("📚 Regulamin 📚");
-            rules.setDescription("");
+            rules.setDescription("1. Postanowienia Ogólne\n" +
+                    "1.1 Nieprzestrzeganie poniższego regulaminu wiąże się z otrzymaniem kary.\n" +
+                    "1.2 Nieznajomość regulaminu nie zwalnia z jego przestrzegania.\n" +
+                    "1.3 Administracja ma pełne prawa do zmieniania treści regulaminu bez wcześniejszego\n" +
+                    "powiadomienia użytkowników o zmianie.\n" +
+                    "1.4 Niniejszy regulamin wchodzi w życie z dniem 27 lutego 2023 roku.\n" +
+                    "2. Zasady kanałów tekstowych\n" +
+                    "2.1 Zakazane jest spamowanie i floodowanie.\n" +
+                    "2.2 Zabrania się pisania wielkimi literami. (CapsLock)\n" +
+                    "2.3 Zakaz używania wulgaryzmów na kanałach tekstowych, a także głosowych.\n" +
+                    "2.4 Zakazane jest prowokowanie kłótni, dyskusji które mają negatywny wpływ na serwer.\n" +
+                    "2.5 Zakaz wykorzystywania, oszukiwania i szantażowania innych użytkowników.\n" +
+                    "2.6 Zabroniony jest wszelkiego rodzaju trolling oraz inne formy zachowań anty społecznych, które\n" +
+                    "służą za przynętę do prowokowania (§2.4) różnych użytkowników.\n" +
+                    "2.7 Zakaz obrażania graczy, administracji i serwera oraz działania na ich szkody.\n" +
+                    "2.8 Reklamowanie jakichkolwiek serwerów zewnętrznych: gier, stron www, serwerów discord itp. bez\n" +
+                    "pisemnej zgody właścicieli jest karalne.\n" +
+                    "2.9 Zakaz wykorzystywania możliwych błędów na serwerze. Należy je natychmiast bezzwłocznie\n" +
+                    "zgłosić administracji z zachowaniem poufności wobec osób trzecich.\n" +
+                    "2.10 Zakazane jest poruszanie tematów wulgarnych/erotycznych/religijnych/rasistowskich itp.\n" +
+                    "2.11 Podszywanie się pod graczy będzie karane kickiem, następnie banem. Podszywanie się pod\n" +
+                    "administrację będzie skutkowało natychmiastowym banem.\n" +
+                    "2.12 Komend można używać tylko na kanale do tego stworzonym.\n" +
+                    "2.13 Zakaz pisania na rzeczy niezgodnych z tematyką kanału.\n" +
+                    "2.14 Zabronione jest wysyłanie linków lub plików zawierających jakiekolwiek treści\n" +
+                    "wulgarne/rasistowskie/pornograficzne/religijne itp. oraz plików szkodliwych (wirusy).\n" +
+                    "2.15 Awatar oraz nick nie może zawierać treści obraźliwych/rasistowskich/wulgarnych itp.\n" +
+                    "2.17 Przeszkadzanie administracji jest surowo karane.\n" +
+                    "3. Zasady kanałów głosowych\n" +
+                    "3.1 Wszystkie zasady kanałów tekstowych obowiązują także w głosowych.\n" +
+                    "3.2 Zakaz krzyczenia i mocnego podnoszenia głosu.\n" +
+                    "3.3 Zakazane jest puszczanie do mikrofonu muzyki itp.\n" +
+                    "3.4 Zabrania się puszczania różnych bliżej nieokreślonych dźwięków, przesterów itp.\n" +
+                    "4. Zasady przyznawania rang\n" +
+                    "4.1 Przyznanie rangi drużynowej, osobom do tego nieuprawnionym jest surowo zabronione.");
             rules.setColor(Color.decode(Config.embedColorAll));
             rules.setFooter("© SoftwareGods.pl");
+            rules.setImage("https://i.imgur.com/BGx2F1K.png");
             e.getChannel().sendMessageEmbeds(rules.build()).setActionRow(Button.success("accept", "✅ Akceptuję ✅")).queue();
             e.reply("Pomyślnie stworzyłeś regulamin serwera");
         } else if (command.equals("głosowanie")) {
@@ -120,7 +155,7 @@ public class CommandMNG extends ListenerAdapter {
             kon.setDescription(koncont);
             kon.setColor(Color.decode(Config.embedColorAll));
             kon.setFooter("© SoftwareGods.pl");
-            e.getChannel().sendMessageEmbeds(kon.build()).setActionRow(Button.danger("Join", "Weź udział w konkursie  •  ")).queue();
+            e.getChannel().sendMessageEmbeds(kon.build()).setActionRow(Button.primary("Join", "✅")).queue();
             e.reply("Pomyślnie stworzyłeś konkurs").setEphemeral(true).queue();
         }
         if (e.getModalId().equals("chan")){
@@ -128,10 +163,11 @@ public class CommandMNG extends ListenerAdapter {
             EmbedBuilder cha = new EmbedBuilder();
             Date nowDate = new Date();
             SimpleDateFormat sdf4 = new SimpleDateFormat("MM/dd/yyyy • HH:mm");
-            cha.setTitle("🔄 Zmiany 🔄");
+            cha.setTitle("🔄     Zmiany   🔄");
             cha.addField("Data zmiany: ", sdf4.format(nowDate), true);
             cha.addField("Administrator: ", e.getMember().getAsMention(), true);
             cha.addField("Treść", koncont, false);
+            cha.setThumbnail("https://i.imgur.com/apRJAXJ.png");
             cha.setColor(Color.decode(Config.embedColorAll));
             cha.setFooter("© SoftwareGods.pl");
             e.getChannel().sendMessageEmbeds(cha.build()).queue(message -> {
@@ -162,21 +198,19 @@ public class CommandMNG extends ListenerAdapter {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-//                String id = users.get((int) (Math.random() * users.size())).getId();
-//                win.setTitle("Wygrał:");
-//                win.setDescription("<@" + id + ">");
-//                e.getChannel().sendMessageEmbeds(win.build()).queue();
 
-                for(int i = 0; i < users.length; i++) {
-                    e.getChannel().sendMessage(users[i]).queue();
+                for (int i = 0; i < users.length; i++) {
+                    //  e.getChannel().sendMessageEmbeds().queue();
                 }
+                e.getMessage().delete().queueAfter(5, TimeUnit.SECONDS);
+                //String roll = String.valueOf((int) (Math.random() * users.length));
+               // win.setTitle("Wygrał:");
+              //  win.setDescription("<@"+roll+">");
+                e.getChannel().sendMessageEmbeds(win.build()).queue();
             }
         }, 20000);
-        e.getMessage().delete().queue();
-    }
-    if (e.getComponentId().equalsIgnoreCase("Joined")){
-    }
-        e.editButton(Button.success("Joined", "Wziąłeś już udział w konkursie")).queue();
+        e.reply("Zarejestrowałeś się do konkursu").setEphemeral(true).queue();
+        }
     }
 
     @Override
