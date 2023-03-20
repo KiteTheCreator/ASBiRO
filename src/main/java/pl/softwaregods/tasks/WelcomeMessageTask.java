@@ -5,6 +5,9 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
+import pl.softwaregods.config.Config;
+
+import java.awt.*;
 
 public class WelcomeMessageTask extends ListenerAdapter {
 
@@ -22,11 +25,13 @@ public class WelcomeMessageTask extends ListenerAdapter {
                 "<#1078855098974883880> - Porozmawiaj z innymi użytkownikami serwera.\n" +
                 "\n" +
                 "Zapraszamy również do zaobserwowania nas na innych Social Mediach:\n" +
-                "Facebook: Kliknij tutaj!\n" +
-                "Instagram: Kliknij tutaj!\n" +
-                "Youtube: Kliknij tutaj!\n" +
-                "TikTok: Kliknij tutaj!\n");
+                "Facebook: [Kliknij tutaj!](https://www.facebook.com/ASBiRO)\n" +
+                "Instagram: [Kliknij tutaj!](https://www.instagram.com/uczelniaasbiro/)\n" +
+                "Youtube: [Kliknij tutaj!](https://www.youtube.com/uczelniaasbiro)\n" +
+                "Oraz na Stronie Internetowej\n" +
+                "WWW: [Kliknij tutaj!](https://www.asbiro.pl/?fbclid=IwAR0g308f5VPd_nDgjyzDo_auqhO6clhR5TrjAdcioWVqXHqMDcvOeZUpFds)\n");
         welcome.setImage("https://i.imgur.com/XJV7Fo7.png");
+        welcome.setColor(Color.decode(Config.embedColorAll));
        // e.getUser().openPrivateChannel().flatMap(channel -> channel.sendMessageEmbeds(welcome.build())).queue();
         e.getGuild().getTextChannelById("1078853366832173087").sendMessageEmbeds(welcome.build()).queue();
         e.getGuild().addRoleToMember(e.getUser(), def).queue();
