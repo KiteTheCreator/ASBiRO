@@ -47,13 +47,15 @@ public class DiscordBot {
                 new Main(),
                 // Senders
                 new StartTicketMessageSender(),
+                new HobbySender(),
+                //Managers
                 new CommandMNG(),
 
                 // Tasks
                 new TicketTask(),
                 new WelcomeMessageTask(),
-                new StatsListener(),
-                new HobbySender()
+                //Listeners
+                new StatsListener()
         );
 
         jda.setStatus(OnlineStatus.ONLINE);
