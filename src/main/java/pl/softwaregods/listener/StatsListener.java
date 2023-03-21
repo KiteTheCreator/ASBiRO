@@ -19,7 +19,6 @@ public class StatsListener extends ListenerAdapter {
         VoiceChannel online = e.getGuild().getVoiceChannelById(1087724634243334164L);
         all.getManager()
              .setName("｜🌐・osoby: " + e.getGuild().getMemberCache().size())
-                .setUserLimit(0)
              .queue();
         Guild guild = e.getGuild();
         long people = guild.getMembers().stream()
@@ -31,4 +30,5 @@ public class StatsListener extends ListenerAdapter {
                 .queue();
     }
     //TODO: Funkcja odejścia użytkownika
+
 }

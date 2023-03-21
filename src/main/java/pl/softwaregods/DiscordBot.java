@@ -13,6 +13,7 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import pl.softwaregods.Managers.CommandMNG;
 import pl.softwaregods.config.Config;
 import pl.softwaregods.listener.StatsListener;
+import pl.softwaregods.senders.HobbySender;
 import pl.softwaregods.senders.StartTicketMessageSender;
 import pl.softwaregods.tasks.TicketTask;
 import pl.softwaregods.tasks.WelcomeMessageTask;
@@ -51,16 +52,17 @@ public class DiscordBot {
                 // Tasks
                 new TicketTask(),
                 new WelcomeMessageTask(),
-                new StatsListener()
+                new StatsListener(),
+                new HobbySender()
         );
 
-        jda.setStatus(OnlineStatus.DO_NOT_DISTURB);
+        jda.setStatus(OnlineStatus.ONLINE);
         jda.setMemberCachePolicy(MemberCachePolicy.ONLINE);
         jda.setChunkingFilter(ChunkingFilter.ALL);
         jda.enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_PRESENCES, GatewayIntent.GUILD_MESSAGE_REACTIONS, GatewayIntent.GUILD_VOICE_STATES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.SCHEDULED_EVENTS);
         jda.enableCache(CacheFlag.ACTIVITY);
         jda.setRateLimitPool(SCHEDULED_THREAD_POOL_EXECUTOR);
-        jda.setActivity(Activity.watching("ASBiRO Polska"));
+        jda.setActivity(Activity.watching("Klub ASBiRO Polska"));
         try {
             return jda.build().awaitReady();
         } catch (Exception e) {

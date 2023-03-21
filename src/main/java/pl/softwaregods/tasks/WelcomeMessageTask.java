@@ -33,7 +33,7 @@ public class WelcomeMessageTask extends ListenerAdapter {
         welcome.setImage("https://i.imgur.com/XJV7Fo7.png");
         welcome.setColor(Color.decode(Config.embedColorAll));
        // e.getUser().openPrivateChannel().flatMap(channel -> channel.sendMessageEmbeds(welcome.build())).queue();
-        e.getGuild().getTextChannelById("1078853366832173087").sendMessageEmbeds(welcome.build()).queue();
+        e.getGuild().getTextChannelById("1087741491440537672").sendMessageEmbeds(welcome.build()).queue();
         e.getGuild().addRoleToMember(e.getUser(), def).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj1).queue();
         e.getGuild().addRoleToMember(e.getUser(), chuj2).queue();

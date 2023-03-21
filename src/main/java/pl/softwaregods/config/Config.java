@@ -33,6 +33,7 @@ public class Config {
 
     public static class Commands {
         public String sender_command = "-uhger564729";
+        public String hobby_command = "-gdful5423";
 
     }
 

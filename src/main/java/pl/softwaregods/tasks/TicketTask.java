@@ -64,16 +64,16 @@ public class TicketTask extends ListenerAdapter {
             String body = e.getValue("ticket-problem").getAsString();
             String name = "Sprawa- " + e.getUser().getAsTag();
             e.reply(Config.messages.ticket_created_message).setEphemeral(true).queue();
-            e.getMember().getUser().openPrivateChannel().submit()
-                    .thenCompose(channel -> channel.sendMessage(Config.messages.ticket_created_message).setActionRow(Button.secondary("sended", "Wiadomość wysłana od  " + e.getGuild().getName()).asDisabled()).submit())
-                    .whenComplete((message, error) -> {
-                    });
+         //   e.getMember().getUser().openPrivateChannel().submit()
+          //          .thenCompose(channel -> channel.sendMessage(Config.messages.ticket_created_message).setActionRow(Button.secondary("sended", "Wiadomość wysłana od  " + e.getGuild().getName()).asDisabled()).submit())
+         //           .whenComplete((message, error) -> {
+         //           });
             TextChannel ticketChannel = e.getGuild().getCategoryById(Config.categories.tickets_category).createTextChannel(name).complete();
             ticketChannel.upsertPermissionOverride(e.getMember()).setAllowed(Permission.VIEW_CHANNEL, Permission.MESSAGE_HISTORY, Permission.MESSAGE_SEND).queue();
             ticketChannel.getManager().setSlowmode(5).complete();
             x.setTitle("Sprawa " + e.getMember().getUser().getAsTag());
             x.setColor(Color.decode(Config.embedColorAll));
-            x.addField("User", "`#` Użytkownik: `" + nick + "`\n`#` Profil Discord: " + e.getUser().getAsMention(), false);
+            x.addField("Użytkownik:", "`#` Użytkownik: `" + nick + "`\n`#` Profil Discord: " + e.getUser().getAsMention(), false);
             x.addField("Wiadomość: ", "`#` " + body, false);
             ticketChannel.sendMessageEmbeds(x.build()).setActionRow(Button.danger(Config.buttons.ticket_close_button_id, Config.messages.ticket_close_button_message)).queue();
             x.clear();
