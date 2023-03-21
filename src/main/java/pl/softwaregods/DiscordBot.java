@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import pl.softwaregods.Managers.CommandMNG;
 import pl.softwaregods.config.Config;
+import pl.softwaregods.listener.StatsListener;
 import pl.softwaregods.senders.StartTicketMessageSender;
 import pl.softwaregods.tasks.TicketTask;
 import pl.softwaregods.tasks.WelcomeMessageTask;
@@ -49,7 +50,8 @@ public class DiscordBot {
 
                 // Tasks
                 new TicketTask(),
-                new WelcomeMessageTask()
+                new WelcomeMessageTask(),
+                new StatsListener()
         );
 
         jda.setStatus(OnlineStatus.DO_NOT_DISTURB);
