@@ -41,7 +41,7 @@ public class DiscordBot {
     }
 
     JDA createUser() {
-        JDABuilder jda = JDABuilder.createDefault("MTA3OTQxMjMyNDk0NDg1OTE5Ng.GsjR6g.n3IIaeAmpYVgnuJNnhNUS9CtbaCXGQkJKAZWCs");
+        JDABuilder jda = JDABuilder.createDefault("TOKEN");
         jda.addEventListeners(
                 // Main
                 new Main(),
